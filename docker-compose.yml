@@ -1,0 +1,19 @@
+version: '2'
+services:
+
+  munity-perf:
+    build: ./tsung/
+    container_name: munity-perf
+    environment:
+        SERVER_HOST: munity.tips
+        SERVER_PORT: 443
+        SERVER_TYPE: ssl
+    ports:
+      - "8091:8091"
+    volumes:
+      - ./docker-data/:/root/.tsung/log/
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "30m"
+        max-file: "10"

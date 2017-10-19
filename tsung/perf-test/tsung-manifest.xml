@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<!DOCTYPE tsung SYSTEM "/usr/local/Cellar/tsung/1.6.0/share/tsung/tsung-1.0.dtd">
+<tsung loglevel="notice" version="1.0">
+
+    <clients>
+        <client host="localhost" use_controller_vm="true" maxusers="15"/>
+    </clients>
+
+    <servers>
+        <server host="#SERVER_HOST" port="#SERVER_PORT" type="#SERVER_TYPE"/>
+    </servers>
+
+    <load>
+        <arrivalphase phase="1" duration="3" unit="minute">
+            <users arrivalrate="10" unit="second"/>
+        </arrivalphase>
+    </load>
+
+    <options>
+        <option name="ports_range" min="10000" max="65535"/>
+        <option type="ts_http" name="user_agent">
+            <user_agent probability="80">Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.7.8) Gecko/20050513
+                Galeon/1.3.21
+            </user_agent>
+            <user_agent probability="20">Mozilla/5.0 (Windows; U; Windows NT 5.2; fr-FR; rv:1.7.8) Gecko/20050511
+                Firefox/1.0.4
+            </user_agent>
+        </option>
+    </options>
+
+    <sessions>
+        <session name="http-eddie" probability="100" type="ts_http">
+
+            <!--Get city by id-->
+            <request>
+                <http url="/rest/v1/cities/251" method="GET" version="1.1">
+                    <http_header name="Authorization"
+                                 value="Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJtdW5pdHktdGVzdEBtdW5pdHkudGlwcyIsIm5iZiI6MTQ4MjQyNjE3OCwicm9sZXMiOlsiUk9MRV9VU0VSIl0sImlzcyI6Im11bml0eS50aXBzIiwiZXhwIjo0MDc0NDI2MTgxLCJpYXQiOjE0ODI0MjYxNzh9.gaJmR7WHMQnDe3yXkZhNi3kHhMV4CLyOePirHTLt0UMiA9i_gDRxEjZ1C_ae_QB5FTyrNf8rAcPj1BAijY5zMg"/>
+                </http>
+            </request>
+
+            <!--Get city start with-->
+            <request>
+                <http url="/rest/v1/cities?startsWith=Ky" method="GET" version="1.1">
+                    <http_header name="Authorization"
+                                 value="Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJtdW5pdHktdGVzdEBtdW5pdHkudGlwcyIsIm5iZiI6MTQ4MjQyNjE3OCwicm9sZXMiOlsiUk9MRV9VU0VSIl0sImlzcyI6Im11bml0eS50aXBzIiwiZXhwIjo0MDc0NDI2MTgxLCJpYXQiOjE0ODI0MjYxNzh9.gaJmR7WHMQnDe3yXkZhNi3kHhMV4CLyOePirHTLt0UMiA9i_gDRxEjZ1C_ae_QB5FTyrNf8rAcPj1BAijY5zMg"/>
+                </http>
+            </request>
+
+            <thinktime random="true" value="15"/>
+        </session>
+    </sessions>
+</tsung>
