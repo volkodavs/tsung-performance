@@ -4,6 +4,7 @@ Tsung is an open-source multi-protocol distributed load testing tool [READ MORE]
 
 ## Performance tests
 
+<img width="1272" alt="screen shot" src="https://user-images.githubusercontent.com/4140597/31773303-3b05ad80-b4da-11e7-9a55-470beeee17ca.png">
 
 #### Tool
 
