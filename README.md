@@ -1,3 +1,5 @@
+[![CircleCI](https://circleci.com/gh/volkodavs/tsung-performance.svg?style=svg)](https://circleci.com/gh/volkodavs/tsung-performance)
+
 # Tsung Performance Tool
 
 Tsung is an open-source multi-protocol distributed load testing tool [READ MORE](http://tsung.erlang-projects.org/)
